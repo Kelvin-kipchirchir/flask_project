@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}dashboard{% endblock %}
+{% block head%}
+{% endblock %}
+{% block body %}
+   {% if error %}
+     <p><strong>Error</strong>:{{error}}</p>
+   {% endif %}
+        <form action="logins" method="POST" enctype="multipart/form-data">
+            <label>Name:</label><br>
+            <input type="text" name="name" required/><br>
+            <label>Password:</label><br>
+            <input type="password" name="password" required><br><br>
+            <button type="submit">Login</button><br>
+            <p>Don't have an account?<a href="{{url_for('sign_up')}}">sign up</a></p>
+
+        </form>
+{% endblock %}

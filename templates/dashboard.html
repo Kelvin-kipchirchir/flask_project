@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}dashboard{% endblock %}
+{% block head%}
+{% endblock %}
+   {{super()}}
+{%block body %}
+<p>others include lower,upper,title,trim</p>
+<p>Welcome please confirm your details</p>
+
+<p>Can proceed to view your profile::here<a href="/viewprofile">View profile</a></p>
+<p>Log out here<a href="/logout">Logout</a></p>
+
+<ul>
+    {% for comment in comments %}
+    <li>{{comment}}</li>
+    {% endfor %}
+</ul>
+<h1>Doing some uploading</h1>
+
+<form method="POST" action="/fileupload" enctype="multipart/form-data">
+    <label>Pick your file</label><br>
+    <input type="file" name="file"><br><br>
+    <button type="submit">Upload</button>
+
+</form>
+<h1>Admin Section</h1>
+<h2>Welcome Admin you can do following:</h2>
+<p><a href="/add_users">Add Users</a></p>
+<h3>Hello Admin,{{msg}}</h3>
+<p><a href="/all_users">View Users</a></p>
+<h3>User Information</h3>
+<table border="5">
+    <thead>
+        <td>ID</td>
+        <td>USER_ID</td>
+        <td>USERNAME</td>
+        <td>EMAIL</td>
+        <td>PHONE</td>
+    </thead>
+    {% for row in rows %}
+    <tr>
+        <td>{{row["id"]}}</td>
+        <td>{{row["user_id"]}}</td>
+        <td>{{row["username"]}}</td>
+        <td>{{row["email"]}}</td>
+        <td>{{row["phone"]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+<a href="/">Go back to homepage </a>
+
+<p><a href="/delete">Delete Users</a></p>
+
+
+{% endblock %}
+pythom
